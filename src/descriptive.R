@@ -6,6 +6,11 @@ visual_time <- data$time[data$feedback_type == "Visual"]
 audio_error <- data$absolute_error[data$feedback_type == "Audio"]
 visual_error <- data$absolute_error[data$feedback_type == "Visual"]
 
+audio_years_experience <- data$years_of_experience[data$feedback_type == "Audio"]
+visual_years_experience <- data$years_of_experience[data$feedback_type == "Visual"]
+
+plot(visual_years_experience, visual_time)
+
 # box plot for audio feedback tuning time
 pdf("figures/boxplot_audio_time.pdf")
 boxplot(audio_time,
