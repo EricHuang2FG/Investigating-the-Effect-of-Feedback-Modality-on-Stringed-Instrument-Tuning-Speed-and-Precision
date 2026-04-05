@@ -184,3 +184,9 @@ arrows(
 )
 
 dev.off()
+
+suppressWarnings(cor.test(visual_years_experience, visual_time, method = "spearman"))
+suppressWarnings(cor.test(visual_years_experience, visual_error, method = "spearman"))
+suppressWarnings(cor.test(audio_years_experience, audio_time, method = "spearman"))
+suppressWarnings(cor.test(audio_years_experience, audio_error, method = "spearman"))
+
