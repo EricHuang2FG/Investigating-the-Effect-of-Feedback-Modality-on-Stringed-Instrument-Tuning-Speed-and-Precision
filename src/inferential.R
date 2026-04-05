@@ -61,6 +61,9 @@ dev.off()
 t.test(audio_time, visual_time)
 t.test(audio_error, visual_error)
 
+suppressWarnings(wilcox.test(visual_time, audio_time))
+suppressWarnings(wilcox.test(visual_error, audio_error))
+
 # visual = read.table('/Users/susie/Downloads/Data Collection - MIE286 Course Project - Visual.txt')
 # visual = vector(visual)
 # visual = Vectorize(visual)
