@@ -1,5 +1,11 @@
+install.packages(c("effsize", "pwr"), repos = "https://cloud.r-project.org/")
+library(effsize)
+library(pwr)
+
+# read data from file
 data <- read.csv("data/data.csv")
 
+# extract data into arrays
 audio_time <- data$time[data$feedback_type == "Audio"]
 visual_time <- data$time[data$feedback_type == "Visual"]
 
@@ -58,34 +64,31 @@ qqnorm(visual_error,
 qqline(visual_error)
 dev.off()
 
+# Welch's t-test
 t.test(audio_time, visual_time)
 t.test(audio_error, visual_error)
 
+# Mann Whitney U test
 suppressWarnings(wilcox.test(visual_time, audio_time))
 suppressWarnings(wilcox.test(visual_error, audio_error))
 
-# visual = read.table('/Users/susie/Downloads/Data Collection - MIE286 Course Project - Visual.txt')
-# visual = vector(visual)
-# visual = Vectorize(visual)
-# visual = as.vector(visual)
-# visual
-# qqnorm(visual)
-# visual = unlist(visual)
-# qqnorm(visual)
-# hist(visual)
-# hist(visual, 'time taken','frequency')
-# help("hist")
-# hist(visual, xlab="time (s)", ylab='frequency')
-# ??box and whisker
-# ??box plot
-# help("box and whisker plot")
-# ??box and whisker plot
-# boxplot(visual)
-# help("boxplot")
-# boxplot(visual, ylab = "time (s)")
-# help("boxplot")
-# boxplot(visual, ylab = "Time (s)", xlab = "Boxplot of Visual Condition")
-# mean(visual)
-# sd(visual)
-# range(visual)
-# 94 - 10.78
+# perform power test and find Type II error
+d_time <- cohen.d(visual_time, audio_time)$estimate
+d_error <- cohen.d(visual_error, audio_error)$estimate
+
+power_time <- pwr.t2n.test(
+    n1 = length(visual_time),
+    n2 = length(audio_time),
+    d = d_time,
+    sig.level = 0.05
+)$power
+
+power_error <- pwr.t2n.test(
+    n1 = length(visual_error),
+    n2 = length(audio_error),
+    d = d_error,
+    sig.level = 0.05
+)$power
+
+(1 - power_time)
+(1 - power_error)
