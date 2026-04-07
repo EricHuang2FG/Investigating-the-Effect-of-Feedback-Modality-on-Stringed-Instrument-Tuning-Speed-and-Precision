@@ -113,6 +113,14 @@ data_ancova <- data.frame(
     experience = c(visual_years_experience, audio_years_experience)
 )
 
+# Balance check: compare experience between groups
+t_test_experience <- t.test(
+    visual_years_experience,
+    audio_years_experience,
+    var.equal = FALSE # Welch's t-test (safer default)
+)
+t_test_experience
+
 # ANCOVA for tuning error (main effect + covariate)
 ancova_error <- aov(error ~ feedback + experience, data = data_ancova)
 ancova_error
