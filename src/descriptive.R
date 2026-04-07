@@ -10,71 +10,34 @@ audio_years_experience <- data$years_of_experience[data$feedback_type == "Audio"
 visual_years_experience <- data$years_of_experience[data$feedback_type == "Visual"]
 
 
-# box plot for audio feedback tuning time
-pdf("figures/boxplot_audio_time.pdf")
-boxplot(audio_time,
-    main = "Audio Feedback Tuning Time",
-    xlab = "",
+# boxplot for tuning time
+pdf("figures/boxplot_tuning_time.pdf")
+
+boxplot(visual_time, audio_time,
+    names = c("Visual Feedback", "Auditory Feedback"),
+    main = "Comparison of Tuning Time by Feedback Modality",
     ylab = "Time (s)",
+    col = c("lightblue", "lightgreen"),
+    boxwex = 0.4,
     cex.main = 1.5,
     cex.lab = 1.2,
     family = "sans"
 )
-
 dev.off()
 
-print("Audio Time:")
-mean(audio_time)
-median(audio_time)
-sd(audio_time)
+# boxplot for tuning error
+pdf("figures/boxplot_tuning_error.pdf")
 
-# box plot for audio feedback tuning error
-pdf("figures/boxplot_audio_error.pdf")
-boxplot(audio_error,
-    main = "Audio Feedback Tuning Error",
-    xlab = "",
+boxplot(visual_error, audio_error,
+    names = c("Visual Feedback", "Auditory Feedback"),
+    main = "Comparison of Tuning Error by Feedback Modality",
     ylab = "Time (s)",
+    col = c("lightblue", "lightgreen"),
+    boxwex = 0.4,
     cex.main = 1.5,
     cex.lab = 1.2,
     family = "sans"
 )
-
-dev.off()
-
-print("Audio Error:")
-mean(audio_error)
-median(audio_error)
-sd(audio_error)
-
-# box plot for visual feedback tuning time
-pdf("figures/boxplot_visual_time.pdf")
-boxplot(visual_time,
-    main = "Visual Feedback Tuning Time",
-    xlab = "",
-    ylab = "Time (s)",
-    cex.main = 1.5,
-    cex.lab = 1.2,
-    family = "sans"
-)
-
-dev.off()
-
-print("Visual Time:")
-mean(visual_time)
-median(visual_time)
-sd(visual_time)
-
-# box plot for visual feedback tuning error
-pdf("figures/boxplot_visual_error.pdf")
-boxplot(visual_error,
-    main = "Visual Feedback Tuning Error",
-    xlab = "",
-    ylab = "Time (s)",
-    cex.main = 1.5,
-    cex.lab = 1.2,
-    family = "sans"
-)
-
 dev.off()
 
 print("Visual Error:")
