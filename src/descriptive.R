@@ -23,6 +23,7 @@ boxplot(audio_time,
 
 dev.off()
 
+print("Audio Time:")
 mean(audio_time)
 median(audio_time)
 sd(audio_time)
@@ -40,6 +41,7 @@ boxplot(audio_error,
 
 dev.off()
 
+print("Audio Error:")
 mean(audio_error)
 median(audio_error)
 sd(audio_error)
@@ -57,6 +59,7 @@ boxplot(visual_time,
 
 dev.off()
 
+print("Visual Time:")
 mean(visual_time)
 median(visual_time)
 sd(visual_time)
@@ -74,6 +77,17 @@ boxplot(visual_error,
 
 dev.off()
 
+print("Visual Error:")
 mean(visual_error)
 median(visual_error)
 sd(visual_error)
+
+print("Audio Years Experience")
+mean(audio_years_experience)
+median(audio_years_experience)
+sd(audio_years_experience)
+
+print("Visual Years Experience")
+mean(visual_years_experience)
+median(visual_years_experience)
+sd(visual_years_experience)

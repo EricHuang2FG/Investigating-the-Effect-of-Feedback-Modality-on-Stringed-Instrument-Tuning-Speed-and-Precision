@@ -12,6 +12,9 @@ visual_time <- data$time[data$feedback_type == "Visual"]
 audio_error <- data$absolute_error[data$feedback_type == "Audio"]
 visual_error <- data$absolute_error[data$feedback_type == "Visual"]
 
+audio_years_experience <- data$years_of_experience[data$feedback_type == "Audio"]
+visual_years_experience <- data$years_of_experience[data$feedback_type == "Visual"]
+
 # QQ plot for audio feedback tuning time
 pdf("figures/qq_audio_time.pdf")
 qqnorm(audio_time,
@@ -76,6 +79,9 @@ suppressWarnings(wilcox.test(visual_error, audio_error))
 d_time <- cohen.d(visual_time, audio_time)$estimate
 d_error <- cohen.d(visual_error, audio_error)$estimate
 
+d_time
+d_error
+
 power_time <- pwr.t2n.test(
     n1 = length(visual_time),
     n2 = length(audio_time),
@@ -90,5 +96,31 @@ power_error <- pwr.t2n.test(
     sig.level = 0.05
 )$power
 
+power_time
+power_error
+
 (1 - power_time)
 (1 - power_error)
+
+# ANCOVA test
+data_ancova <- data.frame(
+    error = c(visual_error, audio_error),
+    time = c(visual_time, audio_time),
+    feedback = factor(c(
+        rep("Visual", length(visual_error)),
+        rep("Audio", length(audio_error))
+    )),
+    experience = c(visual_years_experience, audio_years_experience)
+)
+
+# ANCOVA for tuning error (main effect + covariate)
+ancova_error <- aov(error ~ feedback + experience, data = data_ancova)
+ancova_error
+
+# ANCOVA for tuning time (main effect + covariate)
+ancova_time <- aov(time ~ feedback + experience, data = data_ancova)
+ancova_time
+
+# ANCOVA with interaction (moderation)
+ancova_interaction <- aov(error ~ feedback * experience, data = data_ancova)
+ancova_interaction
