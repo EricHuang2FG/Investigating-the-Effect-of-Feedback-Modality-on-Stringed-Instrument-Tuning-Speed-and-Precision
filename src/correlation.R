@@ -185,6 +185,50 @@ arrows(
 
 dev.off()
 
+
+# plot scatter plots
+pdf("figures/scatter_audio_time_vs_experience.pdf", width = 8, height = 6)
+
+plot(audio_time, audio_years_experience,
+    main = "Audio Tuning Time vs. Years of Experience",
+    xlab = "Years of Experience",
+    ylab = "Tuning Time (s)",
+    pch = 16, col = "blue", cex = 1.2,
+)
+dev.off()
+
+
+pdf("figures/scatter_audio_error_vs_experience.pdf", width = 8, height = 6)
+
+plot(audio_error, audio_years_experience,
+    main = "Audio Tuning Error vs. Years of Experience",
+    xlab = "Years of Experience",
+    ylab = "Tuning Error (Hz)",
+    pch = 16, col = "blue", cex = 1.2,
+)
+dev.off()
+
+pdf("figures/scatter_visual_time_vs_experience.pdf", width = 8, height = 6)
+
+plot(visual_time, visual_years_experience,
+    main = "Visual Tuning Time vs. Years of Experience",
+    xlab = "Years of Experience",
+    ylab = "Tuning Time (s)",
+    pch = 16, col = "blue", cex = 1.2,
+)
+dev.off()
+
+
+pdf("figures/scatter_visual_error_vs_experience.pdf", width = 8, height = 6)
+
+plot(visual_error, visual_years_experience,
+    main = "Visual Tuning Error vs. Years of Experience",
+    xlab = "Years of Experience",
+    ylab = "Tuning Error (Hz)",
+    pch = 16, col = "blue", cex = 1.2,
+)
+dev.off()
+
 suppressWarnings(cor.test(visual_years_experience, visual_time, method = "spearman"))
 suppressWarnings(cor.test(visual_years_experience, visual_error, method = "spearman"))
 suppressWarnings(cor.test(audio_years_experience, audio_time, method = "spearman"))
