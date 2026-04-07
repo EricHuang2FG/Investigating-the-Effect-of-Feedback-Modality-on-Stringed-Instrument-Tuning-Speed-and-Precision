@@ -22,7 +22,7 @@ qqnorm(audio_time,
     xlab = "Theoretical Quantiles",
     ylab = "Sample Quantiles",
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.3,
     family = "sans"
 )
 qqline(audio_time)
@@ -35,7 +35,7 @@ qqnorm(audio_error,
     xlab = "Theoretical Quantiles",
     ylab = "Sample Quantiles",
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.3,
     family = "sans"
 )
 qqline(audio_error)
@@ -48,7 +48,7 @@ qqnorm(visual_time,
     xlab = "Theoretical Quantiles",
     ylab = "Sample Quantiles",
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.3,
     family = "sans"
 )
 qqline(visual_time)
@@ -61,7 +61,7 @@ qqnorm(visual_error,
     xlab = "Theoretical Quantiles",
     ylab = "Sample Quantiles",
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.3,
     family = "sans"
 )
 qqline(visual_error)

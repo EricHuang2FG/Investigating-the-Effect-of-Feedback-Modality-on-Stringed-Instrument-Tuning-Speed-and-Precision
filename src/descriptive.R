@@ -20,7 +20,7 @@ boxplot(visual_time, audio_time,
     col = c("lightblue", "lightgreen"),
     boxwex = 0.4,
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.4,
     family = "sans"
 )
 dev.off()
@@ -35,15 +35,31 @@ boxplot(visual_error, audio_error,
     col = c("lightblue", "lightgreen"),
     boxwex = 0.4,
     cex.main = 1.5,
-    cex.lab = 1.2,
+    cex.lab = 1.4,
     family = "sans"
 )
 dev.off()
 
+# compute descriptive statistics including mean, median, and standard deviation
 print("Visual Error:")
 mean(visual_error)
 median(visual_error)
 sd(visual_error)
+
+print("Visual Time:")
+mean(visual_time)
+median(visual_time)
+sd(visual_time)
+
+print("Auditory Error:")
+mean(audio_error)
+median(audio_error)
+sd(audio_error)
+
+print("Auditory Time:")
+mean(audio_time)
+median(audio_time)
+sd(audio_time)
 
 print("Audio Years Experience")
 mean(audio_years_experience)
